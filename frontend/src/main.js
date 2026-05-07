@@ -2,7 +2,7 @@ import './style.css';
 import DataTable from 'datatables.net-dt';
 import 'datatables.net-dt/css/dataTables.dataTables.css';
 
-const BASE_URL = "http://localhost:5984/jugadores/_design/losjugadores/_view/";
+const BASE_URL = "http://localhost:5985/jugadores/_design/jugadores/_view/";
 
 let tabla = null;
 
@@ -16,7 +16,7 @@ function parsearValor(valor) {
   return valor;
 }
 
-async function cargarDatos(vista = "por_club", filtro = "") {
+async function cargarDatos(vista = "Club", filtro = "") {
   try {
     let url = `${BASE_URL}${vista}`;
 
@@ -37,10 +37,10 @@ async function cargarDatos(vista = "por_club", filtro = "") {
     const datos = json.rows.map(row => {
       return {
         criterio: row.key,
-        nombre: row.value.nombre,
-        seleccion: row.value.seleccion,
-        posicion: row.value.posicion,
-        edad: row.value.edad
+        nombre: row.value.Nombre,
+        seleccion: row.value.Seleccion,
+        posicion: row.value.Posicion,
+        edad: row.value.Edad
       };
     });
 
