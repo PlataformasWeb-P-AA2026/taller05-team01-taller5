@@ -1,94 +1,129 @@
-Nombres: BENAVIDES JUMBO HANSELL STEVEN, ROBLES CAMPOVERDE AARON JESUS
+# Integración de Datos y CouchDB
 
-Primer paso clonar el respositorio
+**Integrantes:**
+- Benavides Jumbo Hansell Steven
+- Robles Campoverde Aaron Jesus
 
+---
+
+## Paso 1: Clonar el repositorio
+
+```bash
 git clone https://github.com/PlataformasWeb-P-AA2026/taller05-team01-taller5.git
+```
 
-Ingresar al proyecto
+Ingresar al proyecto:
 
+```bash
 cd taller05
+```
 
-Entrar a la carpeta data
+---
 
+## Paso 2: Instalar dependencias de Python
+
+Entrar a la carpeta de los scripts:
+
+```bash
 cd frontend/src
+```
 
-Primero lo que debemos hacer es instalar las siguientes librerias con el siguiente comando :
+Instalar las librerías necesarias:
 
-Instalar estas librerias dependencias:
--Pandas
--Beautifulsoup4
--pdfplumber
+```bash
+pip install pandas beautifulsoup4 pdfplumber requests
+```
 
-"pip install pandas beautifulsoup4 pdfplumber"
+| Librería | Uso |
+|----------|-----|
+| `pandas` | Leer archivos CSV |
+| `beautifulsoup4` | Parsear y extraer tablas del HTML |
+| `pdfplumber` | Extraer texto y tablas del PDF |
+| `requests` | Cargar el JSON a CouchDB |
 
-En este caso se usaria Pandas para el Csv, beautifulsoup4 para el HTML y pdfplumber para extaer las tablas del PDFs.
+---
 
-Paso 2:
-Crear un Script que nos permita extraer y unificar los archivos, en este caso sacamos cada script para cada archivo de manera que nos de como resultado tres archivos Json, por cada documento.
+## Paso 3: Extraer y unificar los datos
 
+Cada script extrae los datos de su fuente y genera un JSON parcial. Al final se unifican en un solo archivo.
 
-En el archivo HTML usamos la libreria BeautifulSoup para enontrar la tabla y convertir las filas en diccionarios.
+### 3.1 Extraer datos del HTML (Europa)
 
-#### 2.1 Extraer datos del HTML (Europa)
+Usamos `BeautifulSoup` para encontrar la tabla y convertir las filas en diccionarios.
+
 ```bash
 python extraerHTML.py
 ```
 
-En el archivo CSV usamos Pandas para leer mas facil el CSV.
+### 3.2 Extraer datos del CSV (Sudamérica)
 
+Usamos `Pandas` para leer y estructurar el CSV fácilmente.
 
-#### 2.2 Extraer datos del CSV (Sudamérica)
 ```bash
 python extraerCSV.py
 ```
 
-En el PDF usamos pdfplumber para extraer el texto o las tablas y poder estructuralos.
+### 3.3 Extraer datos del PDF (Norteamérica y Asia)
 
-#### 2.3 Extraer datos del PDF (Norteamérica y Asia)
+Usamos `pdfplumber` para extraer el texto y las tablas del PDF.
+
 ```bash
 python extraerPDF.py
 ```
 
-Luego de eso los unificamos los tres archivos y lo guardamos en un archivo llamado mundial_2026.json, haciendo el llamado de los tres archivos JSON.
+### 3.4 Unificar en `mundial_2026.json`
 
-#### 2.4 Unificar todo en `mundial_2026.json`
+Unifica los tres archivos JSON y los guarda en `mundial_2026.json` con el formato requerido por CouchDB.
+
 ```bash
 python crearJSON_final.py
 ```
 
-Paso 3:
-Cargamos los datos a CouchDB
-Creamos una base de Datos en CouchDb llamada jugadores, luego creamos un script en el cual hacemos un POST de manera que se carge el archivo JSON mundial_2026.json
-En el cual en la URL se puede modificar el nombre de la base,el puerto y el nombre del archivo al cargar al CouchDb.
+---
 
-Creamos un Script llamado jugadoresPost.py utilizando la libreria request con el siguiente comando
+## Paso 4: Cargar los datos a CouchDB
 
-"pip install requests"
+Se crea una base de datos en CouchDB llamada `jugadores` y se hace un `POST` con el archivo `mundial_2026.json`.
 
-Para hacer el POST es decir la carga de datos utilizamos el siguiente comando :
+> En el script `jugadoresPost.py` se puede modificar el nombre de la base, el puerto y el nombre del archivo a cargar.
 
 ```bash
 python jugadoresPost.py
 ```
-Paso 4:
- Las vistas se crean dentro del Design Document `losjugadores` con los siguientes índices:
- Club,Partidos,Goles.
 
- Paso 5:
+---
 
- Levantar el frontend con Vite
+## Paso 5: Vistas en CouchDB
 
- Entrar a la carpeta frontend
+Las vistas se crean dentro del Design Document `losjugadores` con los siguientes índices:
 
- cd frontend
+| Index name     | Campo que emite |
+|----------------|-----------------|
+| `por_club`     | `doc.club_actual` |
+| `por_goles`    | `doc.goles` |
+| `por_partidos` | `doc.partidos` |
 
- ```bash
+Puedes verificarlas en el panel de CouchDB: [http://localhost:5984/_utils](http://localhost:5984/_utils)
+
+---
+
+## Paso 6: Levantar el frontend con Vite
+
+Entrar a la carpeta frontend:
+
+```bash
+cd frontend
+```
+
+Instalar dependencias e iniciar el servidor:
+
+```bash
 npm install
 npm run dev
 ```
 
-Verficar en el localHost
+Verificar en el navegador:
 
-"http://localhost:5173"
-
-
+```
+http://localhost:5173
+```
