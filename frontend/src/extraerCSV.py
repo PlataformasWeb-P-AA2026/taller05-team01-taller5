@@ -4,7 +4,7 @@ import os
 
 def extraerCSV():
     # Ruta relativa para los datos
-    ruta_data = '../data/fuente_csv_sudamerica.csv'
+    ruta_data = '../../data/fuente_csv_sudamerica.csv'
     print(f"Leyendo CSV desde: {ruta_data}")
     
     df = pd.read_csv(ruta_data)

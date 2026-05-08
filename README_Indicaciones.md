@@ -15,7 +15,7 @@ git clone https://github.com/PlataformasWeb-P-AA2026/taller05-team01-taller5.git
 Ingresar al proyecto:
 
 ```bash
-cd taller05
+cd taller05-team01-taller5
 ```
 
 ---

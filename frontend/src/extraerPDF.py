@@ -3,7 +3,7 @@ import json
 import os
 
 def extraerPDF():
-    ruta_data = '../data/'
+    ruta_data = '../../data/'
     # Asegúrate de que el nombre del archivo coincida con el tuyo
     path_pdf = os.path.join(ruta_data, 'fuente_pdf_norteamerica_asia (1).pdf')
     

@@ -1,21 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>vite-jquery-datatable</title>
+    <title>Mundial 2026 — UTPL</title>
+    <link rel="stylesheet" href="/src/style.css" />
   </head>
   <body>
-    <select id="vista">
-      <option value="Club">Por club</option>
-      <option value="Partidos">Por partidos</option>
-      <option value="Goles">Por goles</option>
-    </select>
 
-    <input id="filtro" type="text" placeholder="Filtrar por criterio">
+    <header>
+      <div>
+        <h1>Mundial 2026 — Jugadores</h1>
+        <span>Universidad Técnica Particular de Loja</span>
+      </div>
+    </header>
 
-    <table id="tabla-posts"></table>
+    <div id="app">
+      <h2>Consulta de Jugadores</h2>
+
+      <div class="controles">
+        <select id="vista">
+          <option value="Club">Por club</option>
+          <option value="Partidos">Por partidos</option>
+          <option value="Goles">Por goles</option>
+        </select>
+
+        <input id="filtro" type="text" placeholder="Filtrar por criterio...">
+      </div>
+
+      <table id="tabla-posts"></table>
+    </div>
+
+    <footer>
+      © 2026 UTPL — Plataformas Web · Todos los derechos reservados
+    </footer>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

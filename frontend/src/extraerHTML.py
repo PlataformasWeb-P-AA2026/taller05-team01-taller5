@@ -3,7 +3,7 @@ import os
 from bs4 import BeautifulSoup
 
 def extraerHTML():
-    ruta_data = '../data/fuente_html_europa.html'
+    ruta_data = '../../data/fuente_html_europa.html'
     print(f"Leyendo HTML desde: {ruta_data}")
     
     with open(ruta_data, 'r', encoding='utf-8') as f:

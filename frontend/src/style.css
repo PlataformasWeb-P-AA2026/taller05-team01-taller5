@@ -1,20 +1,138 @@
+:root {
+  --utpl-blue: #003087;
+  --utpl-blue-dark: #00205C;
+  --utpl-white: #FFFFFF;
+  --utpl-gray: #F4F6FA;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   font-family: Arial, sans-serif;
-  margin: 40px;
-  background-color: #f5f5f5;
+  background-color: var(--utpl-gray);
+  color: #1a1a2e;
 }
 
+/* HEADER */
+header {
+  background-color: var(--utpl-blue);
+  color: var(--utpl-white);
+  padding: 16px 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+header h1 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+header span {
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* CONTENEDOR PRINCIPAL */
 #app {
-  background: white;
-  padding: 24px;
-  border-radius: 10px;
+  max-width: 1100px;
+  margin: 32px auto;
+  background: var(--utpl-white);
+  border-radius: 8px;
+  border: 0.5px solid #cdd5e0;
+  padding: 24px 32px;
 }
 
-h1 {
+h2 {
+  color: var(--utpl-blue);
+  font-size: 16px;
+  font-weight: 500;
+  border-left: 3px solid var(--utpl-blue);
+  padding-left: 10px;
   margin-bottom: 20px;
 }
 
+/* CONTROLES */
+.controles {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+select,
+input[type="text"] {
+  padding: 8px 12px;
+  border: 0.5px solid #cdd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+  color: #1a1a2e;
+  background: var(--utpl-white);
+  outline: none;
+}
+
+select:focus,
+input[type="text"]:focus {
+  border-color: var(--utpl-blue);
+}
+
+select {
+  min-width: 160px;
+}
+
+input[type="text"] {
+  flex: 1;
+  min-width: 200px;
+}
+
+/* TABLA */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead {
+  background-color: var(--utpl-blue);
+  color: var(--utpl-white);
+}
+
+thead th {
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 500;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--utpl-gray);
+}
+
+tbody tr:hover {
+  background-color: #dce8f7;
+}
+
+tbody td {
+  padding: 9px 14px;
+  border-bottom: 0.5px solid #e0e7ef;
+}
+
+/* FOOTER */
+footer {
+  background-color: var(--utpl-blue-dark);
+  color: rgba(255, 255, 255, 0.85);
+  text-align: center;
+  font-size: 13px;
+  padding: 14px 32px;
+  margin-top: 48px;
+}
+
+/* ERROR */
 .error {
-  color: red;
-  font-weight: bold;
+  color: #c0392b;
+  font-weight: 500;
 }
